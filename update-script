@@ -1,0 +1,183 @@
+#!/bin/bash
+myip=`ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0' | head -n1`;
+myint=`ifconfig | grep -B1 "inet addr:$myip" | head -n1 | awk '{print $1}'`;
+
+			   red='\e[1;31m'
+               green='\e[0;32m'
+               NC='\e[0m'
+			   
+               echo -e "${red}Connecting to Rasta-Server.net...${NC}"
+               sleep 0.1
+			   
+			   echo "Connecting to your ip :$myip"
+               sleep 0.3
+               
+			   echo "Checking Permission..."
+               sleep 0.4
+               
+			   echo -e "${green}Permission Accepted...${NC}"
+               sleep 0.5
+flag=0
+
+wget --quiet -O ip.txt https://raw.githubusercontent.com/rasta-team/SERVER_IP_REGISTER/master/ip.txt
+
+echo "" 
+echo "        ---------[WELCOME TO RASTA-TEAM™ AUTO-SCRIPT]----------"
+echo "        ====================================================="
+echo "        #           WhatsApp     : +60169872312             #"
+echo "        #           Telegram     : @myvpn007                #"
+echo "        #                                                   #"
+echo "        #       Copyright: © RASTA-TEAM™ Premium 2018       #"
+echo "        ====================================================="
+echo ""
+
+read -p "Your IP Server: " -e -i $myip
+echo ""
+
+echo "Checking Permission..."
+sleep 1
+
+ip="ip.txt"
+
+
+lines=`cat $ip`
+
+for line in $lines; do
+
+        if [ "$line" = "$myip" ];
+        then
+                flag=1
+				echo ""
+				echo -e "${green}Permission Accepted...${NC}"
+				sleep 0.5
+				echo ""
+				echo "		==============================		"
+				echo "		Thanks for using our services.		"
+				echo "		==============================		"
+				echo ""
+        fi
+		
+done
+
+if [ $flag -eq 0 ]
+then
+clear
+echo "                                                        				 "
+echo "======================================================================="
+echo  "Sorry, your ip address $myip is not allowed to access this scripts"
+echo "                                                        "
+echo "Please contact your network administrator to access this service.
+IT-Department : +0169872312
+Telegram : @myvpn007"
+echo "======================================================================="
+
+rm -f /root/ip.txt
+rm -f /root/update-script
+
+	exit 1
+fi
+
+#MENU DEBIAN-v1
+cd
+wget  https://raw.githubusercontent.com/rasta-team/Script-Update/master/menu
+mv ./menu /usr/local/bin/menu
+chmod +x /usr/local/bin/menu
+
+#1 instal Buat Akun SSH/OpenVPN
+cd
+wget https://raw.githubusercontent.com/rasta-team/MyVPS/master/config/buatakun
+mv ./buatakun /usr/bin/buatakun
+chmod +x /usr/bin/buatakun
+
+#2 instal Generate Akun SSH/OpenVPN
+cd
+wget https://raw.githubusercontent.com/rasta-team/MyVPS/master/config/userrenew
+mv ./userrenew /usr/bin/userrenew
+chmod +x /usr/bin/userrenew
+
+#3 instal Hapus Akun SSH/OpenVPN
+cd
+wget https://raw.githubusercontent.com/rasta-team/MyVPS/master/config/userdelete
+mv ./userdelete /usr/bin/userdelete
+chmod +x /usr/bin/userdelete
+
+#4 instal Delete Akun Expire
+cd
+wget https://raw.githubusercontent.com/rasta-team/MyVPS/master/config/deleteuserexpire
+mv ./deleteuserexpire /usr/bin/deleteuserexpire
+chmod +x /usr/bin/deleteuserexpire
+
+#5 instal Cek Login Dropbear, OpenSSH & OpenVPN
+cd
+wget https://raw.githubusercontent.com/rasta-team/MyVPS/master/config/userlogin
+mv ./userlogin /usr/bin/userlogin
+chmod +x /usr/bin/userlogin
+
+#6 instal Melihat detail user SSH & OpenVPN 
+cd
+wget https://raw.githubusercontent.com/rasta-team/MyVPS/master/config/userdetail
+mv ./userdetail /usr/bin/userdetail
+chmod +x /usr/bin/userdetail
+
+#7 User Status
+cd
+wget https://raw.githubusercontent.com/rasta-team/MyVPS/master/user-list
+mv ./user-list /usr/local/bin/user-list
+chmod +x /usr/local/bin/user-list
+
+#8 instal Auto Limit Script Multi Login
+#8 instal Auto Limit Multi Login
+cd
+wget https://raw.githubusercontent.com/rasta-team/MyVPS/master/config/auto-limit-script
+mv ./auto-limit-script /usr/bin/auto-limit-script
+chmod +x /usr/bin/auto-limit-script
+cd
+wget https://raw.githubusercontent.com/rasta-team/MyVPS/master/config/autolimit
+mv ./autolimit /usr/bin/autolimit
+chmod +x /usr/bin/autolimit
+
+#9 instal Melihat daftar user yang terkick oleh perintah user-limit
+cd
+wget https://raw.githubusercontent.com/rasta-team/MyVPS/master/config/loglimit
+mv ./loglimit /usr/bin/loglimit
+chmod +x /usr/bin/loglimit
+
+#10 instal  Kill Multi Login
+cd
+wget https://raw.githubusercontent.com/rasta-team/MyVPS/master/config/autokilluser
+mv ./autokilluser /usr/bin/autokilluser
+chmod +x /usr/bin/autokilluser
+
+#11 instal Auto Banned Akun
+cd
+wget https://raw.githubusercontent.com/rasta-team/MyVPS/master/config/userban
+mv ./userban /usr/bin/userban
+chmod +x /usr/bin/userban
+
+#12 instal Unbanned Akun
+cd
+wget https://raw.githubusercontent.com/rasta-team/MyVPS/master/config/userunban
+mv ./userunban /usr/bin/userunban
+chmod +x /usr/bin/userunban
+
+#13 instal Melihat daftar user yang terbanned oleh perintah user-ban
+cd
+wget https://raw.githubusercontent.com/rasta-team/MyVPS/master/config/logban
+mv ./logban /usr/bin/logban
+chmod +x /usr/bin/logban
+
+#14 Install SPEED tES
+apt-get install python
+wget https://raw.githubusercontent.com/rasta-team/MyVPS/master/config/speedtest.py
+chmod +x speedtest.py
+
+#16 Restart Port
+
+#17 clear cache
+wget -O clearcache.sh "https://raw.githubusercontent.com/yusuf-ardiansyah/debian/master/clearcache/clearcache.sh"
+chmod +x clearcache.sh
+chmod 755 /root/clearcache.sh
+echo "*/1 * * * * root ./clearcache.sh" > /etc/cron.d/clearcache
+
+rm -f /root/ip.txt
+rm -f /root/update-script
