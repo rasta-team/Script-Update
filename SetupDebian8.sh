@@ -85,7 +85,4 @@ chmod +x FullUnlimitedDebian8.sh
 
 ./FullUnlimitedDebian8.sh
 
-#REMOVE INSTALLATION FILE
-rm *.sh;
 
-cat /dev/null > ~/.bash_history && history -c
