@@ -2,7 +2,7 @@
 myip=`ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0' | head -n1`;
 myint=`ifconfig | grep -B1 "inet addr:$myip" | head -n1 | awk '{print $1}'`;
 
-			   red='\e[1;31m'
+	       red='\e[1;31m'
                green='\e[0;32m'
                NC='\e[0m'
 			   
@@ -181,11 +181,6 @@ wget https://raw.githubusercontent.com/rasta-team/Script-Update/master/menu
 mv ./menu /usr/local/bin/menu
 chmod +x /usr/local/bin/menu
 
-#REMOVE INSTALLATION FILE
-rm *.sh;
-
-cat /dev/null > ~/.bash_history && history -c
-
 # About
 clear
 echo "Script ini hanya mengandungi :-"
@@ -209,4 +204,15 @@ echo "Username Pritunl : pritunl"
 echo "Password Pritunl : pritunl"
 echo "Sila copy code dibawah untuk Pritunl anda"
 pritunl setup-key
+
+
+#REMOVE INSTALLATION FILE
+rm -f /root/ip.txt
+rm -f /root/SetupDebian8.sh
+rm -f /root/FullUnlimitedDebian8.sh
+rm *.sh;
+
+cat /dev/null > ~/.bash_history && history -c
+
+
 
